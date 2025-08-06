@@ -1,0 +1,6 @@
+@WebDocker_HostAddress = http://localhost:5063
+
+GET {{WebDocker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
