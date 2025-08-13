@@ -1,0 +1,34 @@
+
+services:
+  webapp:
+    build: .
+    container_name: webappcontainer
+    ports:
+      - "8080:8080"
+    networks:
+      - net1
+    depends_on:
+      - sqlserver
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserverhost;Database=DockerComposeElmahdyhost;User Id=sa;Password=@Abc123@;Encrypt=False;TrustServerCertificate=True
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlservercontainer
+    restart: always
+    hostname: sqlserverhost
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=@Abc123@
+    volumes:
+      - dbdata:/var/opt/mssql
+    ports:
+      - "1433:1433"
+    networks:
+      - net1
+
+networks:
+  net1:
+
+volumes:
+  dbdata:
