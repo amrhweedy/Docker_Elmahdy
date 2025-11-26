@@ -32,3 +32,6 @@ networks:
 
 volumes:
   dbdata:
+
+  #  hostname: sqlserverhost =>  the name of the machine that will be inside the sql server container , instead of using the Ip address to connect to the sql server we can use this hostname
+  #  we will use it in the connection string of the web app to connect to the sql server container
